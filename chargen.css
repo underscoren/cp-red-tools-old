@@ -1,0 +1,89 @@
+.role-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: #fff;
+}
+
+.carousel-insert {
+    width: 100%;
+    height: 20rem;
+}
+
+.roll-table, .roll-table-multiple, #stat-block, .skill-list, .skill-list-final {
+    background-color: #99261e;
+    position: relative;
+    clip-path: 
+        polygon(
+            calc(100% - 20px) 0%,
+            100% 20px,
+            100% 100%,
+            0 100%,
+            0 0
+        );
+}
+
+.choice-box {
+    border: solid 5px #99261e;
+}
+
+.roll-table ul, .roll-table ol, .roll-table-multiple ul, .roll-table-multiple ol, .skill-list li, .skill-list-final li {
+    color: #000;
+    background-color: #ad8785;
+}
+
+
+.roll-table ul li:hover, .roll-table-multiple ul li:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.skill-list li, .skill-list-final li {
+    padding: 0 0.25rem;
+}
+
+.skill-list li:hover, .hover-force-active {
+    background-color: #826564 !important;
+}
+
+.stat {
+    border: solid 2px #070707;
+    background-color: #F4FFFD;
+    width: 6rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+.stat * {
+    display: block;
+}
+
+.stat .label {
+    font-size: 1.25rem;
+    color: #000;
+}
+
+.stat input {
+    width: 4rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skill-level {
+    margin-right: 0.5rem;
+}
+
+.skill-level::before {
+    content: "[";
+}
+
+.skill-level::after {
+    content: "]";
+}
+
+.skill-list-final li .title {
+    font-weight: 700;
+    margin-right: 0.25rem;
+}
+
+.skill-list-final li .title::after {
+    content: ":"
+}

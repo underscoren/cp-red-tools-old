@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="chargen.css">
+    <title>CPR Tools - Character Generator</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><span class="text-danger">CPR</span> Tools</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="chargen.html">Character Generator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="netgen.html">NET Generator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beatgen.html">Beat Generator</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div id="main-content" class="container-lg">
+        <h1 class="display-1 mt-4 mb-2">Character Generator</h1>
+        <hr>
+        <!-- Role -->
+        <div id="step1">
+            <h3>Step 1:</h3>
+            <p class="lead">Select a role</p>
+            <div id="roleCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Rockerboy</h4>
+                            <p class="lead">Rock-and-roll rebels who use performance, art, and rhetoric to fight authority.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#rockerboy-role-icon"></use>
+                                </svg>
+                                Charismatic Impact
+                            </span>
+                            <p class="lead">Influence others by sheer presence of personality</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Rockerboy')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Solo</h4>
+                            <p class="lead">Assassins, bodyguards, killers, and soldiers-for-hire in a lawless new world.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#solo-role-icon"></use>
+                                </svg> 
+                                Combat Awareness
+                            </span>
+                            <p class="lead">Call up your training to have enhanced situational awareness of the battlefield</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Solo')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Netrunner</h4>
+                            <p class="lead">Cybernetic master hackers of the post-NET world and brain-burning secret stealers.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#netrunner-role-icon"></use>
+                                </svg>
+                                Interface
+                            </span>
+                            <p class="lead">Interface with cyberdecks to control computers and electronics</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Netrunner')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Tech</h4>
+                            <p class="lead">Renegade mechanics and supertech inventors; the people who make the Dark Future run.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#tech-role-icon"></use>
+                                </svg> 
+                                Maker
+                            </span>
+                            <p class="lead">Fix, improve, modify, make, and invent new items</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Tech')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Medtech</h4>
+                            <p class="lead">Unsanctioned street doctors and cyberware medics, patching up meat and metal alike.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#medtech-role-icon"></use>
+                                </svg>
+                                Medicine
+                            </span>
+                            <p class="lead">Keep people alive who should be dead</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Medtech')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Media</h4>
+                            <p class="lead">Reporters, media stars, and social influencers risking it all for the truth - or glory.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#media-role-icon"></use>
+                                </svg>
+                                Credibility
+                            </span>
+                            <p class="lead">Convince an audience of the truth of what they publish.</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Media')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Exec</h4>
+                            <p class="lead">Corporate power brokers and business raiders fighting to restore the rule of the Megacorps.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#exec-role-icon"></use>
+                                </svg>
+                                Teamwork
+                            </span>
+                            <p class="lead">Build a team whose members help accomplish their goals, whether legal or not.</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Exec')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Lawman</h4>
+                            <p class="lead">Maximum law enforcers patrolling the mean streets and barbarian warrior highways beyond.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#lawman-role-icon"></use>
+                                </svg>
+                                Backup
+                            </span>
+                            <p class="lead">Call upon the help of a group of fellow officers.</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Lawman')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Fixer</h4>
+                            <p class="lead">Dealmakers, organizers, and information brokers in the post-War Midnight Markets of The Street.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#fixer-role-icon"></use>
+                                </svg>
+                                Operator
+                            </span>
+                            <p class="lead">Know who to talk to and how to get things on the black market.</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Fixer')">Select</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-insert"></div>
+                        <div class="carousel-caption d-block">
+                            <h4>Nomad</h4>
+                            <p class="lead">Transport experts, ultimate road warriors, pirates, and smugglers who keep the world connected.</p>
+                            <span>
+                                <svg viewBox="0 0 512 512" class="role-icon">
+                                    <use xlink:href="#nomad-role-icon"></use>
+                                </svg>
+                                Moto
+                            </span>
+                            <p class="lead">Drive any type of vehicle with tremendous skill.</p>
+                            <button class="btn btn-secondary" onclick="selectRole('Nomad')">Select</button>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#roleCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#roleCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- Lifepath -->
+        <div id="step2" style="display: none;">
+            <div class="d-flex justify-content-between">
+                <h3>Step 2:</h3>
+                <!-- <button class="btn btn-danger back-button">Back</button> -->
+                <!-- TODO: Fix inconsistencies when changing previous options -->
+            </div>
+            <p class="lead">Run your lifepath</p>
+            <p class="mb-3">For each table, either roll or select one from the list.</p>
+            <button id="roll-all-tables" class="btn btn-primary mt-1 mb-3">Roll All</button>
+            <button id="reset-all-tables" class="btn btn-danger mt-1 mb-3">Reset All</button>
+            <div id="main-lifepath" class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div id="culture" class="roll-table p-3 mx-2 mb-1 mt-2 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Cultural Region</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>North American</li>
+                            <li>South/Central American</li>
+                            <li>Western European</li>
+                            <li>Eastern European</li>
+                            <li>Middle Eastern/North African</li>
+                            <li>Sub-Saharan African</li>
+                            <li>South Asian</li>
+                            <li>South East Asian</li>
+                            <li>East Asian</li>
+                            <li>Oceania/Pacific Islander</li>
+                        </ul>
+                    </div>
+                    <div id="language" class="roll-table p-3 mx-2 mb-1 mt-2 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Language (you know Streetslang by default)</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button" disabled>Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1"></ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="personality" class="roll-table p-3 mx-2 mb-1 mt-2 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Personality</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Shy and secretive</li>
+                            <li>Rebellious, antisocial, and violent</li>
+                            <li>Arrogant, proud, and aloof</li>
+                            <li>Moody, rash, and headstrong</li>
+                            <li>Picky, fussy, and nervous</li>
+                            <li>Stable and serious</li>
+                            <li>Silly and fluff-headed</li>
+                            <li>Sneaky and deceptive</li>
+                            <li>Intellectual and detached</li>
+                            <li>Friendly and outgoing</li>
+                        </ul>
+                    </div>
+                    <div id="clothing" class="roll-table p-3 mx-2 mb-1 mt-2 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Clothing Style</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Generic Chic</li>
+                            <li>Leisurewear</li>
+                            <li>Urban Flash</li>
+                            <li>Businesswear</li>
+                            <li>High Fashion</li>
+                            <li>Bohemian</li>
+                            <li>Bag Lady Chic</li>
+                            <li>Gang Colors</li>
+                            <li>Nomad Leathers</li>
+                            <li>Asia Pop</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="hair" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Hairstyle</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Long and ratty</li>
+                            <li>Short and spiked</li>
+                            <li>Wild and all over</li>
+                            <li>Bald</li>
+                            <li>Striped</li>
+                            <li>Wild colors</li>
+                            <li>Neat and short</li>
+                            <li>Short and curly</li>
+                            <li>Long and straight</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="affection" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Affection</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Tattoos</li>
+                            <li>Mirrorshades</li>
+                            <li>Ritual scars</li>
+                            <li>Spiked gloves</li>
+                            <li>Nose rings</li>
+                            <li>Tongue or other piercings</li>
+                            <li>Strange fingernail implants</li>
+                            <li>Spiked boots or heels</li>
+                            <li>Fingerless gloves</li>
+                            <li>Strange contacts</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="value" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>What you value</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Money</li>
+                            <li>Honor</li>
+                            <li>Your word</li>
+                            <li>Honesty</li>
+                            <li>Knowledge</li>
+                            <li>Vengeance</li>
+                            <li>Love</li>
+                            <li>Power</li>
+                            <li>Family</li>
+                            <li>Friendship</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="opinion" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Opinion of people</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>I stay neutral.</li>
+                            <li>I stay neutral.</li>
+                            <li>I like almost everyone.</li>
+                            <li>I hate almost everyone.</li>
+                            <li>People are tools. Use them for your own goals then discard them.</li>
+                            <li>Every person is a valuable individual.</li>
+                            <li>People are obstacles to be destroyed if they cross me.</li>
+                            <li>People are untrustworthy. Don't depend on anyone.</li>
+                            <li>Wipe ‘em all out and let the cockroaches take over.</li>
+                            <li>People are wonderful!</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="valued-person" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Most valued person</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>A parent</li>
+                            <li>A brother or sister</li>
+                            <li>A lover</li>
+                            <li>A friend</li>
+                            <li>Yourself</li>
+                            <li>A pet</li>
+                            <li>A teacher or mentor</li>
+                            <li>A public figure</li>
+                            <li>A personal hero</li>
+                            <li>No one</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="valued-property" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Most valued property</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>A weapon</li>
+                            <li>A tool</li>
+                            <li>A piece of clothing</li>
+                            <li>A photograph</li>
+                            <li>A book or diary</li>
+                            <li>A recording</li>
+                            <li>A musical instrument</li>
+                            <li>A piece of jewelry</li>
+                            <li>A toy</li>
+                            <li>A letter</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="family" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Family background</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Corporate Execs</li>
+                            <li>Corporate Managers</li>
+                            <li>Corporate Technicians</li>
+                            <li>Nomad Pack</li>
+                            <li>Ganger "Family"</li>
+                            <li>Combat Zoners</li>
+                            <li>Urban Homeless</li>
+                            <li>Megastructure Warren Rats</li>
+                            <li>Reclaimers</li>
+                            <li>Edgerunners</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="childhood" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Childhood</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Ran on The Street, with no adult supervision.</li>
+                            <li>Spent in a safe Corp Zone walled off from the rest of the City.</li>
+                            <li>In a Nomad pack moving from place to place.</li>
+                            <li>In a Nomad pack with roots in transport (ships, planes, caravans).</li>
+                            <li>In a decaying, once upscale neighborhood, now holding off the boosters to survive.</li>
+                            <li>In the heart of the Combat Zone, living in a wrecked building or other squat.</li>
+                            <li>In a huge "megastructure" building controlled by a Corp or the City.</li>
+                            <li>In the ruins of a deserted town or city taken over by Reclaimers.</li>
+                            <li>In a Drift Nation (a floating offshore city) that is a meeting place for all kinds of people.</li>
+                            <li>In a Corporate luxury "starscraper," high above the rest of the teeming rabble.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="family-tragedy" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Family Crisis</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Your family lost everything through betrayal.</li>
+                            <li>Your family lost everything through bad management.</li>
+                            <li>Your family was exiled or otherwise driven from their original home/nation/Corporation.</li>
+                            <li>Your family is imprisoned, and you alone escaped.</li>
+                            <li>Your family vanished. You are the only remaining member.</li>
+                            <li>Your family was killed, and you were the only survivor.</li>
+                            <li>Your family is involved in a long-term conspiracy, organization, or association, such as a crime family or revolutionary group.</li>
+                            <li>Your family was scattered to the winds due to misfortune.</li>
+                            <li>Your family is cursed with a hereditary feud that has lasted for generations.</li>
+                            <li>You are the inheritor of a family debt; you must honor this debt before moving on with your life.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="friends" class="roll-table-multiple p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Friends</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll All</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="d-flex mb-1 friends">
+                            <span class="me-2">Number of friends:</span>
+                            <input class="me-2" type="number" min="0" value="0">
+                            <button class="btn btn-primary people-set-button">Set</button>
+                            <button class="btn btn-info people-roll-button">Roll</button>
+                        </div>
+                        <ol class="p-1 mb-3"></ol>
+                        <ul class="list-unstyled p-1" style="display: none;">
+                            <li>Like an older sibling to you.</li>
+                            <li>Like a younger sibling to you.</li>
+                            <li>A teacher or mentor.</li>
+                            <li>A partner or coworker.</li>
+                            <li>A former lover.</li>
+                            <li>An old enemy.</li>
+                            <li>Like a parent to you.</li>
+                            <li>An old childhood friend.</li>
+                            <li>Someone you know from The Street.</li>
+                            <li>Someone with a common interest or goal.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="enemies" class="roll-table-multiple p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll All</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="d-flex mb-1 enemies">
+                            <span class="me-2">Number of enemies:</span>
+                            <input class="me-2" type="number" min="0" value="0">
+                            <button class="btn btn-primary people-set-button">Set</button>
+                            <button class="btn btn-info people-roll-button">Roll</button>
+                        </div>
+                        <div class="row display">
+                            <div class="col">
+                                <h5>Enemy</h5>
+                                <ol class="p-1 mt-3"></ol>
+                            </div>
+                            <div class="col">
+                                <h5>Reason</h5>
+                                <ol class="p-1 mt-3"></ol>
+                            </div>
+                            <div class="col">
+                                <h5>Backup</h5>
+                                <ol class="p-1 mt-3"></ol>
+                            </div>
+                            <div class="col">
+                                <h5>Revenge</h5>
+                                <ol class="p-1 mt-3"></ol>
+                            </div>
+                        </div>
+                        <div class="row selection">
+                            <div class="col">
+                                <ul class="list-unstyled p-1" style="display: none;">
+                                    <li>Ex-friend.</li>
+                                    <li>Ex-lover.</li>
+                                    <li>Estranged relative.</li>
+                                    <li>Childhood enemy.</li>
+                                    <li>Person working for you.</li>
+                                    <li>Person you work for.</li>
+                                    <li>Partner or coworker.</li>
+                                    <li>Corporate exec.</li>
+                                    <li>Government official.</li>
+                                    <li>Boosterganger.</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-unstyled p-1" style="display: none;">
+                                    <li>Caused the other to lose face or status.</li>
+                                    <li>Caused the loss of lover, friend, or relative.</li>
+                                    <li>Caused a major public humiliation.</li>
+                                    <li>Accused the other of cowardice or some other major personal flaw.</li>
+                                    <li>Deserted or betrayed the other.</li>
+                                    <li>Turned down the other's offer of a job or romantic involvement.</li>
+                                    <li>You just don't like each other.</li>
+                                    <li>One of you was a romantic rival.</li>
+                                    <li>One of you was a business rival.</li>
+                                    <li>One of you set the other up for a crime they didn't commit.</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-unstyled p-1" style="display: none;">
+                                    <li>Just themselves and even they won't go out of their way.</li>
+                                    <li>Just themselves.</li>
+                                    <li>Just themselves and a close friend.</li>
+                                    <li>Themselves and a few (1d6/2) friends.</li>
+                                    <li>Themselves and a few (1d10/2) friends.</li>
+                                    <li>An entire gang (at least 1d10 + 5 people).</li>
+                                    <li>The local cops or other Lawmen.</li>
+                                    <li>A powerful gang lord or small Corporation.</li>
+                                    <li>A powerful Corporation.</li>
+                                    <li>An entire city or government or agency.</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-unstyled p-1" style="display: none;">
+                                    <li>Avoid the scum.</li>
+                                    <li>Avoid the scum.</li>
+                                    <li>Go into a murderous rage and try to physically rip their face off.</li>
+                                    <li>Go into a murderous rage and try to physically rip their face off.</li>
+                                    <li>Backstab them indirectly.</li>
+                                    <li>Backstab them indirectly.</li>
+                                    <li>Verbally attack them.</li>
+                                    <li>Verbally attack them.</li>
+                                    <li>Set them up for a crime or other transgression they didn't commit.</li>
+                                    <li>Set out to murder or maim them.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="lovers" class="roll-table-multiple p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Tragic Love Affairs</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll All</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="d-flex mb-1 lovers">
+                            <span class="me-2">Number of exes:</span>
+                            <input class="me-2" type="number" min="0" value="0">
+                            <button class="btn btn-primary people-set-button">Set</button>
+                            <button class="btn btn-info people-roll-button">Roll</button>
+                        </div>
+                        <ol class="p-1 mb-3"></ol>
+                        <ul class="list-unstyled p-1" style="display: none;">
+                            <li>Your lover died in an accident.</li>
+                            <li>Your lover mysteriously vanished.</li>
+                            <li>It just didn't work out.</li>
+                            <li>A personal goal or vendetta came between you and your lover.</li>
+                            <li>Your lover was kidnapped.</li>
+                            <li>Your lover went insane or cyberpsycho.</li>
+                            <li>Your lover committed suicide.</li>
+                            <li>Your lover was killed in a fight.</li>
+                            <li>A rival cut you out of the action.</li>
+                            <li>Your lover is imprisoned or exiled.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="life-goals" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Life Goals</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Get rid of a bad reputation.</li>
+                            <li>Gain power and control.</li>
+                            <li>Get off The Street no matter what it takes.</li>
+                            <li>Cause pain and suffering to anyone who crosses you.</li>
+                            <li>Live down your past life and try to forget it.</li>
+                            <li>Hunt down those responsible for your miserable life and make them pay.</li>
+                            <li>Get what's rightfully yours.</li>
+                            <li>Save, if possible, anyone else involved in your background, like a lover, or family member.</li>
+                            <li>Gain fame and recognition.</li>
+                            <li>Become feared and respected.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Role lifepath -->
+            <h4 class="text-center my-3">Role-based Lifepath</h4>
+            <div id="Rockerboy-lifepath" class="row" style="display: none;">
+                <div class="col-12">
+                    <div id="rockerboy-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Rockerboy Type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Musician</li>
+                            <li>Slam Poet</li>
+                            <li>Street Artist</li>
+                            <li>Performance Artist</li>
+                            <li>Comedian</li>
+                            <li>Orator</li>
+                            <li>Politico</li>
+                            <li>Rap Artist</li>
+                            <li>DJ</li>
+                            <li>Idoru</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="rockerboy-group-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Group or Solo?</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary">Group</button>
+                            <button class="btn btn-secondary" data-show-element="#rockerboy-past-choice">Solo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="rockerboy-past-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Once in a Group?</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary" data-show-element="#rockerboy-leave-reason">Yes</button>
+                            <button class="btn btn-secondary">No</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="rockerboy-leave-reason" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Leave reason</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>You were a jerk and the rest of the group voted you out.</li>
+                            <li>You got caught sleeping around with another member's mainline.</li>
+                            <li>The rest of the group was killed in a tragic "accident."</li>
+                            <li>The rest of the group was murdered or otherwise broken up by external enemies.</li>
+                            <li>The group broke up over "creative differences."</li>
+                            <li>You decided to go solo.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="rockerboy-venue" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Venue</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Alternative Cafes</li>
+                            <li>Private Clubs</li>
+                            <li>Seedy Dive Bars</li>
+                            <li>Guerrilla Performances</li>
+                            <li>Nightclubs Around the City</li>
+                            <li>On the Data Pool</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="rockerboy-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemy</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Old group member who thinks you did them dirty.</li>
+                            <li>Rival group or artist trying to steal market share.</li>
+                            <li>Corporate enemies who don't like your message.</li>
+                            <li>Critic or other "influencer" trying to bring you down.</li>
+                            <li>Older media star who feels threatened by your rising fame.</li>
+                            <li>Romantic interest or media figure who wants revenge for personal reasons.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Solo-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="solo-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Solo Type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Bodyguard</li>
+                            <li>Street Muscle for Hire</li>
+                            <li>Corporate Enforcer who takes jobs on the side</li>
+                            <li>Corporate or Freelance Black Ops Agent</li>
+                            <li>Local Vigilante for Hire</li>
+                            <li>Assassin/Hitman for Hire</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="solo-morals" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Morals</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Always working for good, trying to take out the "bad guys."</li>
+                            <li>Always spare the innocent (elderly, women, children, pets).</li>
+                            <li>Will occasionally slip and do unethical or bad things, but it's rare.</li>
+                            <li>Ruthless and profit centered; you will work for anyone, take any job for the money.</li>
+                            <li>Willing to bend the rules (and the law) to get the job done.</li>
+                            <li>Totally evil. You engage in illegal, unethical work all the time; in fact, you enjoy it</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="solo-territory" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Territory</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>A Corporate Zone</li>
+                            <li>Combat Zones</li>
+                            <li>The whole City</li>
+                            <li>The territory of a single Corporation</li>
+                            <li>The territory of a particular Fixer or contact</li>
+                            <li>Wherever the money takes you</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="solo-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>A Corporate Zone</li>
+                            <li>Combat Zones</li>
+                            <li>The whole City</li>
+                            <li>The territory of a single Corporation</li>
+                            <li>The territory of a particular Fixer or contact</li>
+                            <li>Wherever the money takes you</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Netrunner-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="netrunner-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Netrunner Type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Freelancer who will hack for hire.</li>
+                            <li>Corporate "clone runner" who hacks for the Man.</li>
+                            <li>Hacktivist interested in cracking systems and exposing bad guys.</li>
+                            <li>Just like to crack systems for the fun of it.</li>
+                            <li>Part of a regular team of freelancers.</li>
+                            <li>Hack for a Media, politico, or Lawman who hires you as needed.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="netrunner-partner-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner or Solo?</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary" data-show-element="#netrunner-partner-table">Partner</button>
+                            <button class="btn btn-secondary">Solo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="netrunner-partner-table" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Family member</li>
+                            <li>Old friend</li>
+                            <li>Possible romantic partner as well</li>
+                            <li>Secret partner who might be a rogue AI. Might.</li>
+                            <li>Secret partner with mob/gang connections</li>
+                            <li>Secret partner with Corporate connections</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="netrunner-workspace" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Workspace</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>There are screens everywhere.</li>
+                            <li>It looks better in Virtuality, you swear.</li>
+                            <li>It's a filthy bed covered in wires.</li>
+                            <li>Corporate, modular, and utilitarian.</li>
+                            <li>Minimalist, clean, and organized.</li>
+                            <li>It's taken over your entire living space.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="netrunner-clients" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Clients</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Local Fixers who send you clients.</li>
+                            <li>Local gangers who also protect your work area while you sweep for NET threats.</li>
+                            <li>Corporate Execs who use you for "black project" work.</li>
+                            <li>Local Solos or other combat types who use you to keep their personal systems secure.</li>
+                            <li>Local Nomads and Fixers who use you to keep their family systems secure.</li>
+                            <li>You work for yourself and sell whatever data you can find on the NET.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="netrunner-programs" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Program Source</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Dig around in old abandoned City Zones.</li>
+                            <li>Steal them from other Netrunners you brain-burn.</li>
+                            <li>Have a local Fixer supply programs in exchange for hack work.</li>
+                            <li>Corporate Execs supply you with programs in exchange for your services.</li>
+                            <li>You have backdoors into a few Corporate warehouses.</li>
+                            <li>You hit the Night Markets and score programs whenever you can.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="netrunner-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>You think it might be a rogue AI or a NET Ghost. Either way, it's bad news.</li>
+                            <li>Rival Netrunners who just don't like you.</li>
+                            <li>Corporates who want you to work for them exclusively.</li>
+                            <li>Lawmen who consider you an illegal "black hat" and want to bust you.</li>
+                            <li>Old clients who think you screwed them over.</li>
+                            <li>Fixer or another client who wants your services exclusively.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Tech-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="tech-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Tech type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Cyberware Technician</li>
+                            <li>Vehicle Mechanic</li>
+                            <li>Jack of All Trades</li>
+                            <li>Small Electronics Technician</li>
+                            <li>Weaponsmith</li>
+                            <li>Crazy Inventor</li>
+                            <li>Robot and Drone Mechanic</li>
+                            <li>Heavy Machinery Mechanic</li>
+                            <li>Scavenger</li>
+                            <li>Nautical Mechanic</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="tech-partner-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner or Solo?</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary" data-show-element="#tech-partner-table">Partner</button>
+                            <button class="btn btn-secondary">Solo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="tech-partner-table" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Family member</li>
+                            <li>Old friend</li>
+                            <li>Possible romantic partner as well</li>
+                            <li>Mentor</li>
+                            <li>Secret partner with mob/gang connections</li>
+                            <li>Secret partner with Corporate connections</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="tech-workspace" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Workspace</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>A mess strewn with blueprint paper.</li>
+                            <li>Everything is color coded, but it's still a nightmare.</li>
+                            <li>Totally digital and obsessively backed up every day.</li>
+                            <li>You design everything on your Agent.</li>
+                            <li>You keep everything just in case you need it later.</li>
+                            <li>Only you understand your filing system.</li>
+                            <li>Nautical Mechanic</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="tech-clients" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Clients</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Local Fixers who send you clients.</li>
+                            <li>Local gangers who also protect your work area or home.</li>
+                            <li>Corporate Execs who use you for "black project" work.</li>
+                            <li>Local Solos or other combat types who use you for weapon upkeep.</li>
+                            <li>Local Nomads and Fixers who bring you "found" tech to repair.</li>
+                            <li>You work for yourself and sell what you invent/repair.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="tech-suppliers" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Suppliers</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Scavenge the wreckage you find in abandoned City Zones.</li>
+                            <li>Strip gear from bodies after firefights.</li>
+                            <li>Have a local Fixer bring you supplies in exchange for repair work.</li>
+                            <li>Corporate Execs supply you with stuff in exchange for your services.</li>
+                            <li>You have backdoor into a few Corporate warehouses.</li>
+                            <li>You hit the Night Markets and score deals whenever you can.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="tech-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Combat Zone gangers who want you to work for them exclusively.</li>
+                            <li>Rival Tech trying to steal your customers.</li>
+                            <li>Corporates who want you to work for them exclusively.</li>
+                            <li>Larger manufacturer trying to bring you down because your mods are a threat.</li>
+                            <li>Old client who thinks you screwed them over.</li>
+                            <li>Rival Tech trying to beat you out for resources and parts.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Medtech-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="medtech-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Medtech type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Surgeon</li>
+                            <li>General Practitioner</li>
+                            <li>Trauma Medic</li>
+                            <li>Psychiatrist</li>
+                            <li>Cyberpsycho Therapist</li>
+                            <li>Ripperdoc</li>
+                            <li>Cryosystems Operator</li>
+                            <li>Pharmacist</li>
+                            <li>Bodysculptor</li>
+                            <li>Forensic Pathologist</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="medtech-partner-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner or Solo?</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary" data-show-element="#medtech-partner-table">Partner</button>
+                            <button class="btn btn-secondary">Solo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="medtech-partner-table" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Trauma Team group</li>
+                            <li>Old friend</li>
+                            <li>Possible romantic partner as well</li>
+                            <li>Family member</li>
+                            <li>Secret partner with mob/gang connections</li>
+                            <li>Secret partner with Corporate connections</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="medtech-workspace" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Workspace</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Sterilized daily in the morning like clockwork.</li>
+                            <li>It's not state-of-the-art anymore, but it's comfortable to you.</li>
+                            <li>Your cryo equipment is also used to cool drinks.</li>
+                            <li>Everything possible is single-use and stored compacted until needed.</li>
+                            <li>Not as clean as many of your patients may have hoped.</li>
+                            <li>Meticulously organized, sharpened, and sterilized.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="medtech-clients" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Clients</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Local Fixers who send you clients.</li>
+                            <li>Local gangers who also protect your work area or home in exchange for medical help.</li>
+                            <li>Corporate Execs who use you for "black project" medical work.</li>
+                            <li>Local Solos or other combat types who use you for medical help.</li>
+                            <li>Local Nomads and Fixers who bring you wounded clients.</li>
+                            <li>Trauma Team paramedical work.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="medtech-supplies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Supplies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Scavenge stashes of medical supplies you find in abandoned City Zones.</li>
+                            <li>Strip parts from bodies after firefights.</li>
+                            <li>Have a local Fixer bring you supplies in exchange for medical work.</li>
+                            <li>Corporate Execs or Trauma Team supply you with stuff in exchange for your services.</li>
+                            <li>You have a backdoor into a few Corporate or Hospital warehouses.</li>
+                            <li>You hit the Night Markets and score deals whenever you can.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Media-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="media-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Media type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Blogger</li>
+                            <li>Writer (Books)</li>
+                            <li>Videographer</li>
+                            <li>Documentarian</li>
+                            <li>Investigative Reporter</li>
+                            <li>Street Scribe</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="media-outlet" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Outlet</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Monthly magazine</li>
+                            <li>Blog</li>
+                            <li>Mainstream vid feed</li>
+                            <li>News channel</li>
+                            <li>"Book" sales</li>
+                            <li>Screamsheets</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="media-ethics" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Ethics</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Fair, honest reporting, strong ethical practices. You only report the verifiable truth.</li>
+                            <li>Fair and honest reporting, but willing to go on hearsay and rumor if that's what it takes.</li>
+                            <li>Will occasionally slip and do unethical things, but it's rare. You have some standards.</li>
+                            <li>Willing to bend any rules to get the bad guys. But only the bad guys.</li>
+                            <li>Ruthless and determined to make it big, even if it means breaking the law. You're a muckraker.</li>
+                            <li>Totally corrupt. You take bribes, engage in illegal, unethical reporting all the time. Your pen is for hire to the highest bidder.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="media-stories" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Stories</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Political Intrigue</li>
+                            <li>Ecological Impact</li>
+                            <li>Celebrity News</li>
+                            <li>Corporate Takedowns</li>
+                            <li>Editorials</li>
+                            <li>Propaganda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Exec-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="exec-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Exec type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Financial</li>
+                            <li>Media and Communications</li>
+                            <li>Cybertech and Medical Technologies</li>
+                            <li>Pharmaceuticals and Biotech</li>
+                            <li>Food, Clothing, or other General Consumables</li>
+                            <li>Energy Production</li>
+                            <li>Personal Electronics and Robotics</li>
+                            <li>Corporate Services</li>
+                            <li>Consumer Services</li>
+                            <li>Real Estate and Construction</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="exec-division" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Division</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Procurement</li>
+                            <li>Manufacturing</li>
+                            <li>Research and Development</li>
+                            <li>Human Resources</li>
+                            <li>Public Affairs/Publicity/Advertising</li>
+                            <li>Mergers and Acquisitions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="exec-ethics" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Ethics</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Always working for good, fully supporting ethical practices.</li>
+                            <li>Operates as a fair and honest business all the time.</li>
+                            <li>Will occasionally slip and do unethical things, but it's rare.</li>
+                            <li>Willing to bend the rules to get what it needs.</li>
+                            <li>Ruthless and profit-centered, willing to do some bad things.</li>
+                            <li>Totally evil. Will engage in illegal, unethical business all the time.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="exec-hq-location" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>HQ Location</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>One city</li>
+                            <li>Several cities</li>
+                            <li>Statewide</li>
+                            <li>National</li>
+                            <li>International, offices in a few major cities</li>
+                            <li>International, offices everywhere</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="exec-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Rival Corp in the same industry.</li>
+                            <li>Law enforcement is watching you.</li>
+                            <li>Local Media wants to bring you down.</li>
+                            <li>Different divisions in your own company are feuding with each other.</li>
+                            <li>Local government doesn't like your Corp.</li>
+                            <li>International Corporations are eyeing you for a hostile takeover.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="exec-boss" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Boss</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Your Boss mentors you but watch out for their enemies.</li>
+                            <li>Your Boss gives you a free hand and doesn't want to know what you're up to.</li>
+                            <li>Your Boss is a micromanager who tries to meddle in your work.</li>
+                            <li>Your Boss is a psycho whose unpredictable outbursts are offset by quiet paranoia.</li>
+                            <li>Your Boss is cool and watches your back against rivals.</li>
+                            <li>Your Boss is threatened by your meteoric rise and is planning to knife you.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Lawman-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="lawman-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Lawman position</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Guard</li>
+                            <li>Standard Beat or Patrol</li>
+                            <li>Criminal Investigation</li>
+                            <li>Special Weapons and Tactics</li>
+                            <li>Motor Patrol</li>
+                            <li>Internal Affairs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="lawman-jurisdiction" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Jurisdiction</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Corporate Zones</li>
+                            <li>Standard City Patrol Zone</li>
+                            <li>Combat Zones</li>
+                            <li>Outer City</li>
+                            <li>Recovery Zones</li>
+                            <li>Open Highways</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="lawman-ethics" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Ethics</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Fair, honest policing, strong ethical practices.</li>
+                            <li>Fair and honest policing, but hard on lawbreakers.</li>
+                            <li>Will occasionally slip and do unethical things, but it's rare.</li>
+                            <li>Willing to bend any rules to get the bad guys.</li>
+                            <li>Ruthless and determined to control The Street, even if it means breaking the law.</li>
+                            <li>Totally corrupt. You take bribes, engage in illegal, and unethical business all the time.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="lawman-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Organized Crime</li>
+                            <li>Boostergangs</li>
+                            <li>Police Accountability Group</li>
+                            <li>Dirty Politicians</li>
+                            <li>Smugglers</li>
+                            <li>Street Criminals</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="lawman-target" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Target</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Organized Crime</li>
+                            <li>Boostergangs</li>
+                            <li>Drug Runners</li>
+                            <li>Dirty Politicians</li>
+                            <li>Smugglers</li>
+                            <li>Street Crime</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Fixer-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="fixer-type" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Fixer type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Broker deals between rival gangs.</li>
+                            <li>Procure rare or atypical resources for exclusive clientele.</li>
+                            <li>Specialize in brokering Solo or Tech services as an agent.</li>
+                            <li>Supply a regular resource for the Night Markets, like food, medicines, or drugs.</li>
+                            <li>Procure highly illegal resources, like street drugs or milspec weapons.</li>
+                            <li>Supply resources for Techs and Medtechs, like parts and medical supplies.</li>
+                            <li>Operate several successful Night Markets, although not as owner.</li>
+                            <li>Broker use contracts for heavy machinery, military vehicles, and aircraft.</li>
+                            <li>Broker deals as a fence for scavengers raiding Corps or Combat Zones.</li>
+                            <li>Act as an exclusive agent for a Media, Rockerboy, or a Nomad Pack.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="fixer-partner-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner or Solo?</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary" data-show-element="#fixer-partner-table">Partner</button>
+                            <button class="btn btn-secondary">Solo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="fixer-partner-table" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Partner</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Family member</li>
+                            <li>Old friend</li>
+                            <li>Possible romantic partner as well</li>
+                            <li>Mentor</li>
+                            <li>Secret partner with mob/gang connections</li>
+                            <li>Secret partner with Corporate connections</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="fixer-office" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Office</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>You don't have one. You like to keep it mobile.</li>
+                            <li>A booth in a local bar.</li>
+                            <li>All Data Pool messages and anonymous dead drops.</li>
+                            <li>Spare room in a warehouse, shop, or clinic.</li>
+                            <li>An otherwise abandoned building.</li>
+                            <li>The lobby of a cube hotel.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="fixer-clients" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Clients</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Local Rockerboys or Medias who use you to get them gigs or contacts.</li>
+                            <li>Local gangers who also protect your work area or home.</li>
+                            <li>Corporate Execs who use you for "black project" procurement work.</li>
+                            <li>Local Solos or other combat types who use you to get them jobs or contacts.</li>
+                            <li>Local Nomads and Fixers who use you to set up transactions or deals.</li>
+                            <li>Local politicos or Execs who depend on you for finding out information.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="fixer-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Combat Zone gangers who want you to work for them exclusively.</li>
+                            <li>Rival Fixers trying to steal your clients.</li>
+                            <li>Execs who want you to work for them exclusively.</li>
+                            <li>Enemy of a former client who wants to clean up "loose ends"-like you.</li>
+                            <li>Old client who thinks you screwed them over.</li>
+                            <li>Rival Fixer trying to beat you out for resources and parts.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="Nomad-lifepath" class="row" style="display: none;">
+                <div class="col-lg-6 col-md-12">
+                    <div id="nomad-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Nomad Pack Size</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>A single extended tribe or family</li>
+                            <li>A couple dozen members</li>
+                            <li>Forty or fifty members</li>
+                            <li>A hundred or more members</li>
+                            <li>A Blood Family (hundreds of members)</li>
+                            <li>An Affiliated Family (made of several Blood Families)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="nomad-pack-choice" class="choice-box col-lg-6 col-12 p-4 mx-auto my-3">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Pack Type</h5>
+                            <span>
+                                <button class="btn btn-info choice-roll-button">Roll</button>
+                                <button class="btn btn-warning choice-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <div class="choice d-flex justify-content-evenly p-2">
+                            <button class="btn btn-primary" data-show-element="#nomad-land-pack">Land</button>
+                            <button class="btn btn-secondary" data-show-element="#nomad-sea-pack">Sea</button>
+                            <button class="btn btn-info" data-show-element="#nomad-air-pack">Air</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="nomad-land-pack" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Nomad Land Pack Type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Gogang</li>
+                            <li>Passenger transport</li>
+                            <li>Chautauqua/school</li>
+                            <li>Traveling show/carnival</li>
+                            <li>Migrant farmers</li>
+                            <li>Cargo transport</li>
+                            <li>Shipment protection</li>
+                            <li>Smuggling</li>
+                            <li>Mercenary army</li>
+                            <li>Construction work gang</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="nomad-sea-pack" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Nomad Sea Pack Type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Piracy</li>
+                            <li>Cargo transport</li>
+                            <li>Passenger transport</li>
+                            <li>Smuggling</li>
+                            <li>Combat support</li>
+                            <li>Submarine warfare</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="nomad-air-pack" class="roll-table p-3 mx-2 my-1 col-12" style="display: none;">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Nomad Air Pack Type</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Air piracy</li>
+                            <li>Cargo transport</li>
+                            <li>Passenger transport</li>
+                            <li>Aircraft protection</li>
+                            <li>Smuggling</li>
+                            <li>Combat support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="nomad-pack-role" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Nomad Pack Role</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Scout (negotiator)</li>
+                            <li>Outrider (protection, weapons)</li>
+                            <li>Transport pilot/driver</li>
+                            <li>Loadmaster (large cargo mover, trucker)</li>
+                            <li>Solo smuggler</li>
+                            <li>Procurement (fuel, vehicles, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div id="nomad-pack-ethics" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Pack Ethics</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Always working for good; your Pack accepts others, just wants to get along.</li>
+                            <li>It's more like a family business. Operates as a fair and honest concern.</li>
+                            <li>Will occasionally slip and do unethical things, but it's rare.</li>
+                            <li>Willing to bend the rules whenever they get in the way to get what the Pack needs.</li>
+                            <li>Ruthless and self-centered, willing to do some bad things if it will get the Pack ahead.</li>
+                            <li>Totally evil. You rage up and down the highways, killing, looting, and just terrorizing everyone.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mx-auto">
+                    <div id="nomad-pack-enemies" class="roll-table p-3 mx-2 my-1 col-12">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5>Pack Enemies</h5>
+                            <span>
+                                <button class="btn btn-info table-roll-button">Roll</button>
+                                <button class="btn btn-warning table-reset-button" disabled>Reset</button>
+                            </span>
+                        </div>
+                        <ul class="list-unstyled p-1">
+                            <li>Organized Crime</li>
+                            <li>Boostergangs</li>
+                            <li>Drug Runners</li>
+                            <li>Dirty Politicians</li>
+                            <li>Rival Packs in the same businesses</li>
+                            <li>Dirty Cops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary my-3 mx-auto" id="lifepath-done">Finish</button>
+        </div>
+        <!-- Stats and Skills -->
+        <div id="step3" style="display: none;">
+            <div class="d-flex justify-content-between">
+                <h3>Step 3:</h3>
+                <!-- <button class="btn btn-danger back-button">Back</button> -->
+                <!-- TODO: Fix inconsistencies when changing previous options -->
+            </div>
+            <p class="lead">Stats and Skills</p>
+            <h4 class="mb-3">Stats</h4>
+            <p class="mb-3">Stats determine your baseline for performing actions</p>
+            <div id="stat-block" class="col-lg-10 col-12 row mx-auto mb-3 p-3">
+                <div class="d-flex justify-content-evenly mb-3">
+                    <span class="stat">
+                        <span class="label">INT</span>
+                        <input id="int" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">REF</span>
+                        <input id="ref" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">DEX</span>
+                        <input id="dex" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">TECH</span>
+                        <input id="tech" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">COOL</span>
+                        <input id="cool" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                </div>
+                <div class="d-flex justify-content-evenly">
+                    <span class="stat">
+                        <span class="label">WILL</span>
+                        <input id="will" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">LUCK</span>
+                        <input id="luck" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">MOVE</span>
+                        <input id="move" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">BODY</span>
+                        <input id="body" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat">
+                        <span class="label">EMP</span>
+                        <input id="emp" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                </div>
+            </div>
+            <div id="stat-info" class="text-center" style="display: none;">
+                <p>
+                    <span class="me-2">Stat remaining:</span>
+                    <span id="stat-remaining">62</span>
+                </p>
+                <button id="point-buy-done" class="btn btn-info">Done</button>
+            </div>
+            <div class="my-3 text-center">
+                <button id="stat-roll-block" class="btn btn-primary me-2 mb-2">Roll stat block<br>(Streetrat)</button>
+                <button id="stat-roll-individual" class="btn btn-primary me-2 mb-2">Roll all stats<br>(Edgerunner)</button>
+                <button id="stat-point-buy" class="btn btn-primary mb-2">Point buy stats<br>(Complete Package)</button>
+            </div>
+            <h4>Derived stats</h4>
+            <p>These stats are calculated using your main stats</p>
+            <div id="stat-derived-block" class="col-lg-8 col-12 row mx-auto mb-3 p-3">
+                <div class="d-flex justify-content-evenly">
+                    <span class="stat d-flex flex-column justify-content-between">
+                        <span class="label">HP</span>
+                        <input id="hp" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat d-flex flex-column justify-content-between">
+                        <span class="label">Seriously<br>Wounded</span>
+                        <input id="seriously-wounded" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat d-flex flex-column justify-content-between">
+                        <span class="label">Death<br>Save</span>
+                        <input id="death-save" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                    <span class="stat d-flex flex-column justify-content-between">
+                        <span class="label">Humanity</span>
+                        <input id="humanity" type="number" min="2" max="8" value="0" disabled>
+                    </span>
+                </div>
+            </div>
+            <h4 class="mb-3">Skills</h4>
+            <p>Skills are your ability to perform specific complex actions</p>
+            <div class="d-flex mx-auto">
+                <button id="skill-template" class="btn btn-primary me-3 mb-2">Use Skill Template<br>(Streetrat)</button>
+                <button id="skill-limited" class="btn btn-primary me-3 mb-2">Choose relevant Skills<br>(Edgerunner)</button>
+                <button id="skill-all" class="btn btn-primary me-3 mb-2">Choose any Skills<br>(Complete Package)</button>
+            </div>
+            <div id="skill-buy-lists" class="row" style="display: none;">
+                <p>Skills with an asterisk (*) need to have a specific form, check the rulebook for more details.</p>
+                <p>Skills with (x2) cost double the points to increase</p>
+                <p class="text-muted">Add skill level by clicking on it in this list</p>
+                <div class="col-lg-3 col-6">
+                    <div>
+                        <h5>Awareness Skills</h5>
+                        <ul id="skill-awareness" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Concentration<span class="fw-bold ms-2">WILL</span></li>
+                            <li>Conceal/Reveal Object<span class="fw-bold ms-2">INT</span></li>
+                            <li>Lip Reading<span class="fw-bold ms-2">INT</span></li>
+                            <li>Perception<span class="fw-bold ms-2">INT</span></li>
+                            <li>Tracking<span class="fw-bold ms-2">INT</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Body Skills</h5>
+                        <ul id="skill-body" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Athletics<span class="fw-bold ms-2">DEX</span></li>
+                            <li>Contortionist<span class="fw-bold ms-2">DEX</span></li>
+                            <li>Dance<span class="fw-bold ms-2">DEX</span></li>
+                            <li>Endurance<span class="fw-bold ms-2">WILL</span></li>
+                            <li>Resist Torture/Drugs<span class="fw-bold ms-2">WILL</span></li>
+                            <li>Stealth<span class="fw-bold ms-2">DEX</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Control Skills</h5>
+                        <ul id="skill-control" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Drive Land Vehicle<span class="fw-bold ms-2">REF</span></li>
+                            <li>Pilot Air Vehicle (x2)<span class="fw-bold ms-2">REF</span></li>
+                            <li>Pilot Sea Vehicle<span class="fw-bold ms-2">REF</span></li>
+                            <li>Riding<span class="fw-bold ms-2">REF</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h5>Education Skills</h5>
+                    <ul id="skill-education" class="list-unstyled skill-list m-3 p-1 pt-4">
+                        <li>Accounting<span class="fw-bold ms-2">INT</span></li>
+                        <li>Animal Handling<span class="fw-bold ms-2">INT</span></li>
+                        <li>Bureaucracy<span class="fw-bold ms-2">INT</span></li>
+                        <li>Business<span class="fw-bold ms-2">INT</span></li>
+                        <li>Composition<span class="fw-bold ms-2">INT</span></li>
+                        <li>Criminology<span class="fw-bold ms-2">INT</span></li>
+                        <li>Cryptography<span class="fw-bold ms-2">INT</span></li>
+                        <li>Deduction<span class="fw-bold ms-2">INT</span></li>
+                        <li>Education<span class="fw-bold ms-2">INT</span></li>
+                        <li>Gamble<span class="fw-bold ms-2">INT</span></li>
+                        <li>Language*<span class="fw-bold ms-2">INT</span></li>
+                        <li>Library Search<span class="fw-bold ms-2">INT</span></li>
+                        <li>Local Expert*<span class="fw-bold ms-2">INT</span></li>
+                        <li>Science*<span class="fw-bold ms-2">INT</span></li>
+                        <li>Tactics<span class="fw-bold ms-2">INT</span></li>
+                        <li>Wilderness Survival<span class="fw-bold ms-2">INT</span></li>
+                    </ul>
+                    <div>
+                        <h5>Fighting Skills</h5>
+                        <ul id="skill-fighting" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Brawling<span class="fw-bold ms-2">DEX</span></li>
+                            <li>Evasion<span class="fw-bold ms-2">DEX</span></li>
+                            <li>Martial Arts* (x2)<span class="fw-bold ms-2">DEX</span></li>
+                            <li>Melee Weapon<span class="fw-bold ms-2">DEX</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div>
+                        <h5>Performance Skills</h5>
+                        <ul id="skill-performance" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Acting<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Play Instrument*<span class="fw-bold ms-2">TECH</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Ranged Weapon Skills</h5>
+                        <ul id="skill-ranged-weapon" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Archery<span class="fw-bold ms-2">REF</span></li>
+                            <li>Autofire (x2)<span class="fw-bold ms-2">REF</span></li>
+                            <li>Handgun<span class="fw-bold ms-2">REF</span></li>
+                            <li>Heavy Weapons (x2)<span class="fw-bold ms-2">REF</span></li>
+                            <li>Shoulder Arms<span class="fw-bold ms-2">REF</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Social Skills</h5>
+                        <ul id="skill-social" class="list-unstyled skill-list m-3 p-1 pt-4">
+                            <li>Bribery<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Conversation<span class="fw-bold ms-2">EMP</span></li>
+                            <li>Human Perception<span class="fw-bold ms-2">EMP</span></li>
+                            <li>Interrogation<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Persuasion<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Personal Grooming<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Streetwise<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Trading<span class="fw-bold ms-2">COOL</span></li>
+                            <li>Wardrobe & Style<span class="fw-bold ms-2">COOL</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h5>Technique Skills</h5>
+                    <ul id="skill-technique" class="list-unstyled skill-list m-3 p-1 pt-4">
+                        <li>Air Vehicle Tech<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Basic Tech<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Cybertech<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Demolitions (x2)<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Electronics/Security Tech (x2)<span class="fw-bold ms-2">TECH</span></li>
+                        <li>First Aid<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Forgery<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Land Vehicle Tech<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Paint/Draw/Sculpt<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Paramedic (x2)<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Photography/Film<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Pick Lock<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Pick Pocket<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Sea Vehicle Tech<span class="fw-bold ms-2">TECH</span></li>
+                        <li>Weaponstech<span class="fw-bold ms-2">TECH</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="player-skills" class="my-3" style="display: none;">
+                <h4>Your skills</h4>
+                <p>Remaining skill points: <span id="remaining-skill-points">86</span></p>
+                <p class="text-muted">Remove skill level by clicking on it. The first 13 skills can't be less then level 2.</p>
+                <div class="col-6 col-lg-4">
+                    <ul id="player-skill-list" class="list-unstyled skill-list m-3 p-1 pt-4"></ul>
+                </div>
+                <p class="fw-bold">Note: You also have 4 levels for the specific language you chose in your lifepath.</p>
+                <button id="player-skill-done" class="btn btn-primary" disabled>Done</button>
+            </div>
+        </div>
+        <!-- Items and Cyberware -->
+        <div id="step4" style="display: none;">
+            <div class="d-flex justify-content-between">
+                <h3>Step 4:</h3>
+                <!-- <button class="btn btn-danger back-button">Back</button> -->
+                <!-- TODO: Fix inconsistencies when changing previous options -->
+            </div>
+            <p class="lead">Items and Cyberware</p>
+            <p>You will need to look up items in the rulebook. There are reduced item lists on pages 91-102, and a complete list on page 340</p>
+            <div id="gear">
+                <h4 class="mb-3">Items</h4>
+                <p class="mb-3">This includes weapons, armor, gear, role equipment (e.g. netrunner programs) and clothes</p>
+                <div>
+                    <button id="items-preset" class="btn btn-primary me-3 mb-3">Use Pre-selected Items/Cyberware<br>(Streetrat/Edgerunner)</button>
+                    <button id="items-manual" class="btn btn-secondary me-3 mb-3">Buy all Items/Cyberware manually<br>(Complete Package)</button>
+                    <p id="preset-items-message" style="display: none;">If the item is listed as A or B, you can only choose one.</p>
+                </div>
+                <p class="mb-0">You have <span class="eddies-left fw-bold">0</span>eb left to spend or keep</p>
+                <p class="fasion-complete-message" class="mt-2" style="display: none;">You have an additional <span class="fw-bold">700</span>eb to spend on Fashion or Fashionware. You don't get to keep any left over.</p>
+                <div class="col-md-10 mx-auto mt-4">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Price (eb)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items-table"></tbody>
+                    </table>
+                </div>
+                <div class="col-md-5 mt-5 mb-3">
+                    <div id="items-input" class="input-group g-3">
+                        <input id="item-name" type="text" class="form-control" placeholder="Name">
+                        <input id="item-cost" type="number" class="form-control" value="0">
+                        <span class="input-group-text">eb</span>
+                    </div>
+                </div>
+                <button id="purchase-items" class="btn btn-primary" disabled>Purchase</button>
+                <div id="alerts-items">
+                    <div id="not-enough-eddies-items" class="alert alert-warning alert-dismissible fade show" role="alert" style="display: none;">
+                        You do not have enough eddies
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <div id="cyberware" class="mt-5">
+                <h4 class="mb-3">Cyberware</h4>
+                <p>This includes Fashionware, Neuralware, Optics/Audio, Internal, External, Limbs and Borgware</p>
+                <p class="mb-0">You have <span class="eddies-left fw-bold">0</span>eb left to spend or keep</p>
+                <p class="fasion-complete-message" class="mt-2" style="display: none;">You have an additional <span class="fw-bold">700</span>eb to spend on Fashion or Fashionware. You don't get to keep any left over.</p>
+                <p>You started with <span class="fw-bold" id="start-humanity">0</span> humanity and now have <span class="fw-bold" id="new-humanity">0</span>. Your new EMP stat is <span class="fw-bold" id="new-emp">0</span></p>
+                <div class="col-md-10 mx-auto">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cyberware</th>
+                                <th scope="col">Price (eb)</th>
+                                <th scope="col">Humanity Loss</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cyberware-table"></tbody>
+                    </table>
+                </div>
+                <div class="col-md-5 mt-5 mb-3">
+                    <div id="cyberware-input" class="input-group g-3">
+                        <input id="cyberware-name" type="text" class="form-control" placeholder="Name">
+                        <input id="cyberware-cost" type="number" class="form-control" value="0">
+                        <span class="input-group-text">eb</span>
+                        <input id="cyberware-humanity-cost" type="number" class="form-control" value="0">
+                        <span class="input-group-text">HL</span>
+                    </div>
+                </div>
+                <button id="purchase-cyberware" class="btn btn-primary" disabled>Install</button>
+                <div id="alerts-cyberware">
+                    <div id="not-enough-eddies-cyberware" class="alert alert-warning alert-dismissible fade show mt-3" role="alert" style="display: none;">
+                        You do not have enough eddies
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div id="not-enough-humanity-cyberware" class="alert alert-warning alert-dismissible fade show mt-3" role="alert" style="display: none;">
+                        You do not have enough humanity
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <button id="finish-character" class="btn btn-primary mt-5">Finish making character</button>
+        </div>
+        <!-- Finished Character -->
+        <div id="finished-character" style="display: none;">
+            <div class="row">
+                <h3 class="mb-4">Finished Character</h3>
+                <div class="col-12 mb-2">
+                    <h5 class="text-center">Role</h5>
+                    <p class="text-capitalize text-center" id="role-name"></p>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <h5>Lifepath</h5>
+                    <div class="skill-list-final p-2 pt-4">
+                        <ul id="lifepath-generic" class="list-unstyled mb-0"></ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <h5>Role Lifepath</h5>
+                    <div class="skill-list-final p-2 pt-4">
+                        <ul id="lifepath-role" class="list-unstyled mb-0"></ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <h5>Friends</h5>
+                    <div class="skill-list-final p-2 pt-4">
+                        <ol id="lifepath-friends"></ol>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <h5>Lovers</h5>
+                    <div class="skill-list-final p-2 pt-4">
+                        <ol id="lifepath-friends"></ol>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <h5>Enemies</h5>
+                    <div class="row mx-0">
+                        <div class="col-md-3 skill-list-final">
+                            <p class="fw-bold">Enemy</p>
+                            <ol id="lifepath-enemies-0"></ol>
+                        </div>
+                        <div class="col-md-3 skill-list-final">
+                            <p class="fw-bold">Reason</p>
+                            <ol id="lifepath-enemies-1"></ol>
+                        </div>
+                        <div class="col-md-3 skill-list-final">
+                            <p class="fw-bold">Backup</p>
+                            <ol id="lifepath-enemies-2"></ol>
+                        </div>
+                        <div class="col-md-3 skill-list-final">
+                            <p class="fw-bold">Revenge</p>
+                            <ol id="lifepath-enemies-3"></ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <h5>Stats</h5>
+                    <div class="col-lg-10 col-12 row mx-auto mb-3 p-3 skill-list-final">
+                        <div class="d-flex justify-content-evenly mb-3">
+                            <span class="stat">
+                                <span class="label">INT</span>
+                                <input id="int-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">REF</span>
+                                <input id="ref-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">DEX</span>
+                                <input id="dex-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">TECH</span>
+                                <input id="tech-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">COOL</span>
+                                <input id="cool-final" type="number" disabled>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-evenly">
+                            <span class="stat">
+                                <span class="label">WILL</span>
+                                <input id="will-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">LUCK</span>
+                                <input id="luck-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">MOVE</span>
+                                <input id="move-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">BODY</span>
+                                <input id="body-final" type="number" disabled>
+                            </span>
+                            <span class="stat">
+                                <span class="label">EMP</span>
+                                <input id="emp-final" type="number" disabled>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <h5>Derived Stats</h5>
+                    <div class="col-lg-8 col-12 row mx-auto mb-3 p-3 skill-list-final">
+                        <div class="d-flex justify-content-evenly">
+                            <span class="stat d-flex flex-column justify-content-between">
+                                <span class="label">HP</span>
+                                <input id="hp-final" type="number" disabled>
+                            </span>
+                            <span class="stat d-flex flex-column justify-content-between">
+                                <span class="label">Seriously<br>Wounded</span>
+                                <input id="seriously-wounded-final" type="number" disabled>
+                            </span>
+                            <span class="stat d-flex flex-column justify-content-between">
+                                <span class="label">Death<br>Save</span>
+                                <input id="death-save-final" type="number" disabled>
+                            </span>
+                            <span class="stat d-flex flex-column justify-content-between">
+                                <span class="label">Humanity</span>
+                                <input id="humanity-final" type="number" disabled>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-evenly mb-2">
+                    <div class="col-md-4">
+                        <h5>Skills</h5>
+                        <div class="skill-list-final p-2 pt-4 mx-3 mb-2">
+                            <ul id="skills-final" class="list-unstyled mb-0"></ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Items</h5>
+                        <div class="skill-list-final p-2 pt-4 mx-3 mb-2">
+                            <ul id="items-final" class="list-unstyled mb-0"></ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Cyberware</h5>
+                        <div class="skill-list-final p-2 pt-4 mx-3 mb-2">
+                            <ul id="cyberware-final" class="list-unstyled mb-0"></ul>
+                        </div>
+                    </div>
+                </div>
+                <h5>Eddies</h5>
+                <p><span class="fw-bold" id="eddies-final"></span>eb</p>
+                <p class="my-5">You can share your finished character using this URL: <input onclick="this.select()" type="text" id="finished-char-url" class="ms-2"></p>
+            </div>
+        </div>
+    </div>
+    <!-- Inline SVG icons. Maybe move this to an external file? This is ~8kb -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="display: none;">
+        <path id="rockerboy-role-icon" d="M256 33c-21 0-39 20-39 47s18 47 39 47 39-20 39-47-18-47-39-47zM110 55l-17 8c15 23 32 47 50 69 20 25 40 45 53 52l5 2v40a371 371 0 0066 3l-13-13c-5-1-10-5-13-9a29 29 0 010-33c3-4 8-8 15-8s12 4 15 8c3 5 5 11 5 17s-2 11-5 16l7 7c6 5 15 10 25 13l8-1v-40l5-2c13-7 33-27 53-52 18-22 35-46 50-69l-17-8c-47 46-94 90-146 90s-99-44-146-90zm29 180l13 61c101 9 107 9 208 0l13-61a530 530 0 01-234 0zm40 81l13 107h128l13-107c-67 6-87 6-154 0zm-42 125v20h238v-20H137zM16 478v18h480v-18H16z"/>
+        <path id="solo-role-icon" d="M121 18c-58 17-98 52-98 93 0 40 40 75 98 92-34-22-55-55-55-92 0-38 21-71 55-93zm277 0c34 22 56 55 56 93 0 37-22 70-55 92 57-17 97-52 97-92 0-41-40-76-98-93zM163 42c-43 12-73 38-73 69 0 30 30 56 73 69a84 84 0 01-41-69c0-28 16-53 41-69zm193 0c25 16 42 41 42 69 0 27-16 52-41 69 43-13 72-39 72-69 0-31-30-57-73-69zm-101 6c-23 3-44 30-44 65 0 19 6 36 16 48l10 12-15 3c-13 2-23 9-30 20-8 11-14 26-19 43-7 32-9 70-9 104h41l1 9 11 141h90l9-141 1-9h40c0-34-1-73-8-105-4-17-9-32-18-43-8-11-17-18-32-20l-16-2 10-13c10-12 16-28 16-47 0-37-23-64-49-64l-5-1zm-51 13c-32 9-53 28-53 50s21 41 52 50a61 61 0 01-30-50c0-21 12-38 31-50zm112 0c18 12 30 29 30 50 0 20-12 38-30 50 31-9 53-28 53-50s-22-41-53-50z"/>
+        <path id="netrunner-role-icon" d="M406 25l-7 23 14 14 23-7V25zm-29 26l-10 10 33 33 10-10zm-23 23l-43 44 32 32 44-43zm-56 57l-33 32 33 33 32-33zm-57 33L113 292l-9 27 38 37 26-8 128-128zm172 141c-15 0-32 4-49 10-38 16-79 44-120 72s-82 56-116 69c-17 6-32 9-45 7s-23-7-33-20c-2-3-2-7 1-15 3-7 10-15 17-24l26-25-13-13-27 27c-8 8-15 18-19 28-5 10-7 23 1 32 12 16 27 26 44 28s36-1 54-8c38-15 79-43 120-71s82-56 117-70c18-7 34-10 47-9 14 1 26 7 36 19 11 12 12 30 6 53-6 22-20 47-35 71l-19 28h22a568 568 0 0012-18c16-25 30-51 37-77 7-25 7-50-9-69a70 70 0 00-48-25 84 84 0 00-7 0zM94 334l-10 10 33 33 10-10z"/>
+        <path id="tech-role-icon" d="M413 70l-76 121-8-32-31 89 63-30v30l127-51-70-2 47-69-73 39 21-95zm-203 32l-32 14 17 56-178 80 13 28 178-80 30 49 49-22-21-70-56-55zm-12 165v20h-89c16 39 51 66 89 74v33h58c-12 31-33 56-58 78h-26v19h285v-19h-28c-29-22-50-47-61-78h63v-29c20-7 40-19 59-36-19-18-39-28-59-32v-30H198z"/>
+        <path id="medtech-role-icon" d="M196 496c-17 0-30-13-30-30V346H46c-17 0-30-13-30-30V196c0-17 13-30 30-30h120V46c0-17 13-30 30-30h120c17 0 30 13 30 30v120h120c17 0 30 13 30 30v120c0 17-13 30-30 30H346v120c0 17-13 30-30 30zm0-135h120l-60-60zm0-75h120l-60-60zm0-75h120l-60-60z"/>
+        <path id="media-role-icon" d="M264 21c-14 0-26 7-36 20a88 88 0 00-16 52c0 21 6 39 16 52s22 20 36 20c13 0 25-7 35-20s16-31 16-52-6-39-16-52-22-20-35-20zm-111 4l-16 9 60 116 9-4c-8-14-13-30-14-47l-39-74zm221 0l-39 75c-2 16-6 31-13 44l9 4 60-114-17-9zM103 65L89 77l84 94 13-14-83-92zm322 0l-82 90a73 73 0 0114 13l81-91-13-12zM63 118l-10 15 104 67 8-17-102-65zm401 0l-99 63 8 17 101-65-10-15zm-153 42a62 62 0 01-47 24c-18 0-35-9-47-22-25 6-38 27-47 57-8 29-10 66-10 101h26l-3-67 18-1 4 80 12 164h38V363h18v133h41l10-165 4-79 19 1-4 67h24c0-35 0-73-8-102-4-16-10-30-18-40-8-8-17-15-30-18zM37 180l-5 18 116 34 4-18-115-34zm453 0l-112 33 3 19 115-34-6-18zM26 248v18h117l2-18H27zm357 0l2 18h116v-18H383zm-241 35L32 316l5 18 105-31v-20zm244 0v20l104 31 6-18-110-33zm-245 41l-88 57 10 15 90-57h-12v-9-6zm245 0v15h-11l89 57 10-15-88-57zm-209 15l-88 98 14 12 85-95-1-15h-10zm165 0l-1 18 84 92 13-12-88-98h-8zm-152 39l-53 102 16 9 39-75-2-36zm150 5l-2 36 36 70 17-9-51-97z"/>
+        <path id="exec-role-icon" d="M369 21c-19 0-36 11-48 27-11 16-18 37-18 60 0 21 5 41 15 56-6 1-11 4-16 6-10-8-22-13-36-13-19 0-36 10-48 26l-11 22c-5-3-10-5-16-6 10-15 15-34 15-55 0-23-7-44-19-60-11-16-28-26-47-26s-37 10-48 26c-12 16-19 37-19 60 0 21 6 41 15 56-32 9-50 37-59 70-10 35-11 77-11 116v9h46l6 99h19l-7-106-4-80-19 1 4 67H37c0-35 2-72 10-101 9-31 23-53 51-58h5c10 9 23 14 37 14s26-6 37-15h5c7 1 14 4 20 7-2 6-2 13-2 20 0 22 5 41 15 56-32 9-50 37-59 70-10 35-11 78-11 116v9h64v-7l-4-80-19 1 3 68h-25c0-36 2-73 10-102 9-31 23-52 51-58h5c10 9 23 14 36 14 14 0 27-6 38-15h4c15 3 26 9 35 19 8 10 14 23 18 39 7 30 8 67 8 103h-24l4-68-19-1-4 82v5h62v-9c0-38 0-81-9-116-4-18-11-35-22-47a75 75 0 00-39-24c9-15 15-34 15-55 0-22-7-43-18-58l13-4h5c10 8 22 14 36 14s27-6 37-15h5c15 2 26 9 34 18 9 10 15 24 19 40 7 29 8 66 8 102h-24l4-67-19-1-4 79-9 143h19l8-135h43v-10c0-38 1-80-8-116-4-18-11-34-22-47a73 73 0 00-39-23c9-15 15-34 15-55 0-23-7-44-19-60a68 68 0 00-48-27zm0 19c13 0 24 7 33 19s15 29 15 49-6 37-15 49-20 19-33 19c-12 0-24-7-33-19s-15-30-15-49c0-20 6-37 15-49s21-19 33-19zM140 76c12 0 23 7 32 19s15 30 15 49-6 37-15 50c-9 12-20 18-32 18-13 0-24-6-33-18-9-13-15-30-15-50 0-19 6-37 15-49s20-19 32-19zm197 23v18h23V99h-23zm41 0v18h23V99h-23zm-270 36v19h22v-19h-22zm41 0v19h22v-19h-22zm117 40c13 0 24 7 33 19s15 30 15 49c0 20-6 37-15 50-9 12-20 19-33 19-12 0-24-7-33-19-9-13-15-30-15-50 0-19 6-37 15-49s21-19 33-19zm-31 59v19h22v-19zm41 0v19h22v-19h-22z"/>
+        <path id="lawman-role-icon" d="M165 22h-2c-30 4-53 36-53 74 0 22 8 42 19 55-62 12-66 116-66 188h43l11 153h63l-11-152h21l12 152h108l10-152h22l-10 152h63l11-153h40c0-73 1-178-66-189 11-13 18-33 18-54 0-41-26-74-59-74h-6c-10 1-18 5-25 11 16 14 27 37 27 63 0 21-7 41-18 54 67 11 66 116 66 189h-22c0-73 1-178-66-188 11-14 18-33 18-54 0-41-26-75-59-75h-6c-30 4-53 36-53 75 0 22 8 41 19 55-62 11-66 115-66 187h-22c0-72 5-176 66-188a87 87 0 01-18-55c0-26 11-49 27-63-9-7-20-11-32-11h-4z"/>
+        <path id="fixer-role-icon" d="M255 21c-31 0-59 33-59 75 0 43 28 75 59 75s58-32 58-75-27-75-58-75zm-32 52h18v46h-18V73zm43 0h19v46h-19V73zm44 88a71 71 0 01-55 29c-21 0-40-10-54-27-11 4-20 12-28 23-9 13-17 31-22 52-4 20-7 42-9 64 8 4 15 10 20 17 7 9 11 20 14 31 4-11 8-21 15-30 5-7 11-13 19-17-5-10-7-21-7-33 0-34 22-64 53-64s54 30 54 64c0 11-3 22-7 31 9 4 17 10 22 18 7 9 12 20 15 32 4-11 8-22 15-31 4-6 10-12 16-16-1-23-3-46-8-67-4-21-11-40-21-53-8-11-18-19-32-23zM90 225c-16 0-32 15-34 38h24v18H56c4 21 18 35 34 35 15 0 30-14 34-35H99v-18h25c-3-23-18-38-34-38zm166 0c-16 0-31 15-34 38h24v18h-24c3 16 12 28 23 32l-17 3c-9 1-16 6-22 15-6 8-11 19-14 33-6 24-7 53-7 79h23v-51h19v103h62V392h19v51h21c0-26 0-56-5-80-3-13-8-25-14-33s-13-13-23-15h-1l-18-2c11-5 19-17 22-32h-25v-18h26c-3-23-19-38-35-38zm166 0c-16 0-31 15-34 38h24v18h-24c4 21 19 35 34 35 16 0 30-14 34-35h-25v-18h26c-3-23-19-38-35-38zm-294 91a49 49 0 01-38 19c-14 0-26-6-35-16-5 2-9 6-13 12-6 8-11 19-14 33-6 24-7 53-7 79h23v-51h19v103h62V392h18v51h23c0-26-1-56-6-80-3-13-7-25-13-33-5-7-11-12-19-14zm331 1c-9 11-22 18-37 18-14 0-27-7-36-17-7 2-12 6-16 13-6 8-11 19-14 33-6 24-7 53-7 79h23v-51h18v103h62V392h19v51h23c0-26-1-56-6-80-3-14-7-25-13-33-5-6-10-10-16-13z"/>
+        <path id="nomad-role-icon" d="M284 21c31 19 56 45 75 74-73-66-206-81-299-8 45-19 92-19 138-8-83 4-164 57-179 150 28-45 72-80 120-99C48 181-1 307 68 404c-12-51-5-103 14-150a213 213 0 00144 238c-98-80-125-175-112-250a139 139 0 1151 119c12 18 25 32 41 43 43 43 121 81 184 69-25-10-47-20-63-35 51 3 110-9 146-40-21 3-40 5-58 3 39-26 69-66 77-117-28 45-72 79-121 99 92-52 141-178 71-274 12 50 6 103-13 150 25-100-30-219-145-238zm-31 112h-5l-2 19-22 4-9-17c-9 3-18 7-27 13l9 17-18 15-16-11-17 25 17 11c-4 7-6 14-8 22l-20-1a122 122 0 00-2 29l20 2c0 7 2 15 4 23l-18 8c3 10 8 19 13 27l18-9c4 7 9 13 15 18l-11 16c7 7 15 12 24 17l11-16 22 8-1 19a122 122 0 0030 2l1-19 23-4 9 17 26-13-8-17c7-5 13-10 18-16l15 11c7-8 12-16 17-25l-15-10c3-7 6-15 7-22l19 1a122 122 0 002-30l-18-1-5-23 17-8c-4-10-8-19-13-27l-17 8c-4-7-10-12-15-18l10-15c-7-7-16-12-25-17l-10 16c-7-4-14-6-22-8l1-19-24-2zm1 42c17 0 33 6 45 15l-33 29a35 35 0 00-34 6c-9 9-13 21-11 33l-37 32a78 78 0 0170-115zm69 43a78 78 0 01-115 99l38-33a34 34 0 0042-37l35-29zm-69 18h2c4 0 7 2 10 5 6 7 5 16-1 22-7 6-17 5-22-1-6-7-5-17 1-22 3-3 7-4 10-4z"/>
+    </svg>
+    <!-- Foooter -->
+    <footer class="navbar">
+        <hr class="w-75 mx-auto">
+        <div class="container-fluid">
+            <span class="navbar-text text-muted">
+                All original materials are &#169; R. Talsorian Games Inc. No Copyright infringement is intended. Icons are from <a href="https://game-icons.net/">game-icons.net</a>, see <a href="LICENSES.txt">LICENSES.txt</a> for details. The rest of the site is licensed under MIT.
+            </span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="chargen.js"></script>
+    <script>
+        const footerHeight = $("footer").height();
+        $("footer").css({"height": footerHeight + "px", "margin-top": -footerHeight+"px"});
+        $("#main-content").css("padding-bottom",footerHeight+"px");
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+Icons used:
+
+Public speaker icon by Delapouite
+Awareness icon by Lorc
+Jack plug icon by Delapouite
+Health increase icon by sbed
+Beams Aura icon by Lorc
+Dark squad icon by Lorc
+Backup icon by Lorc
+Minions icon by Lorc
+Overdrive icon by Lorc
+
+The icons were slightly modified by running them through SVGO to reduce file size, then consolidated into one file.
+Each of the above icons is licensed under CC-BY-3.0 which is avaliable here: https://creativecommons.org/licenses/by/3.0/
